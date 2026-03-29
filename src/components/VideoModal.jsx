@@ -37,7 +37,7 @@ const VideoModal = ({ isOpen, onClose, videoUrl }) => {
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside video
           >
             {/* The user can easily swap this iframe URL with their client projects */}
-            {videoUrl && videoUrl.includes('.mp4') ? (
+            {videoUrl && videoUrl.includes('.mp4') && !videoUrl.includes('streamtape') ? (
               <video 
                 src={videoUrl} 
                 autoPlay 

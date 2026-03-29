@@ -57,14 +57,27 @@ const Home = () => {
     setModalOpen(true);
   };
 
-  // Placeholders for content
+  const handleSlideChange = () => {
+    // Reload iframes to stop video playback entirely when swiping to next slide
+    const iframes = document.querySelectorAll('.showreels-swiper iframe');
+    iframes.forEach(iframe => {
+      const src = iframe.src;
+      iframe.src = src;
+    });
+  };
+
+  // Content configuration with Streamtape secure links
   const heroSlides = [
-    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking', video: '/video/2016.mp4' },
-    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation', video: '/video/2017.mp4' },
-    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ', video: '/video/2018.mp4' }
+    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking', video: 'https://streamtape.com/e/LDVm8bJpDMsRpq9/2016.mp4' },
+    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation', video: 'https://streamtape.com/e/A6ypZLazQzhX0PL/2017.mp4' },
+    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ', video: 'https://streamtape.com/e/DzL0D9PepyukM8d/2018.mp4' }
   ];
 
-  const showreels = ['/video/2018.mp4', '/video/2017.mp4', '/video/2016.mp4'];
+  const showreels = [
+    'https://streamtape.com/e/DzL0D9PepyukM8d/2018.mp4',
+    'https://streamtape.com/e/A6ypZLazQzhX0PL/2017.mp4',
+    'https://streamtape.com/e/LDVm8bJpDMsRpq9/2016.mp4'
+  ];
 
   const clientLogos = [
     blackbird, cinesite, framestore, imageEngine, method, pixomondo,
@@ -98,22 +111,24 @@ const Home = () => {
         >
           {heroSlides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <div className="slide-content tracking-pattern-bg">
-                <div className="container">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    <span className="marker-plus" style={{ marginBottom: '2rem', transform: 'scale(1.5)' }}></span>
-                    <h1 className="hero-title">{slide.title}</h1>
-                    <p className="hero-desc">{slide.desc}</p>
-                    <button className="btn-primary" style={{ marginTop: '2rem' }} onClick={() => openVideo(slide.video)}>
-                      {t('hero.cta')}
-                    </button>
-                  </motion.div>
+              {({ isActive }) => (
+                <div className="slide-content tracking-pattern-bg">
+                  <div className="container">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <span className="marker-plus" style={{ marginBottom: '2rem', transform: 'scale(1.5)' }}></span>
+                      <h1 className="hero-title">{slide.title}</h1>
+                      <p className="hero-desc">{slide.desc}</p>
+                      <button className="btn-primary" style={{ marginTop: '2rem' }} onClick={() => openVideo(slide.video)}>
+                        {t('hero.cta')}
+                      </button>
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
@@ -130,6 +145,7 @@ const Home = () => {
           navigation
           spaceBetween={30}
           slidesPerView={1}
+          onSlideChange={handleSlideChange}
           className="showreels-swiper"
         >
           {showreels.map((item, idx) => (
@@ -140,12 +156,11 @@ const Home = () => {
                 onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--accent-green)'}
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--glass-border)'}
               >
-                <video
+                <iframe
                   src={item}
-                  controls
-                  preload="metadata"
+                  allowFullScreen
                   className="swiper-no-swiping"
-                  style={{ width: '100%', display: 'block', aspectRatio: '16/9', objectFit: 'cover', background: '#000' }}
+                  style={{ width: '100%', display: 'block', aspectRatio: '16/9', objectFit: 'cover', background: '#000', border: 'none' }}
                 />
               </div>
             </SwiperSlide>

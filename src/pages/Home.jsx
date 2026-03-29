@@ -26,9 +26,8 @@ import ab8After from '../assets/AB/8.png';
 import ab9Before from '../assets/AB/9-1.png';
 import ab9After from '../assets/AB/9.png';
 
-import video2016 from '../assets/video/2016.mp4';
-import video2017 from '../assets/video/2017.mp4';
-import video2018 from '../assets/video/2018.mp4';
+// Videos explicitly referenced from /video/ public path to guarantee Netlify build success
+
 
 import blackbird from '../assets/clients/blackbird.png';
 import cinesite from '../assets/clients/cinesite.png';
@@ -60,12 +59,12 @@ const Home = () => {
 
   // Placeholders for content
   const heroSlides = [
-    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking', video: video2016 },
-    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation', video: video2017 },
-    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ', video: video2018 }
+    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking', video: '/video/2016.mp4' },
+    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation', video: '/video/2017.mp4' },
+    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ', video: '/video/2018.mp4' }
   ];
 
-  const showreels = [video2018, video2017, video2016];
+  const showreels = ['/video/2018.mp4', '/video/2017.mp4', '/video/2016.mp4'];
 
   const clientLogos = [
     blackbird, cinesite, framestore, imageEngine, method, pixomondo,

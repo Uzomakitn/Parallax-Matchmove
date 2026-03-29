@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "projects": "Projets",
+    "demoreel": "Démo",
+    "team": "Notre Équipe",
+    "about": "À Propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title1": "CRÉATEURS",
+    "title2": "D'ILLUSIONS",
+    "subtitle": "Tracking et matchmoving premium pour VFX haut de gamme.",
+    "cta": "Voir la Bande Démo"
+  },
+  "services": {
+    "title": "NOTRE EXPERTISE",
+    "s1_title": "Tracking 3D",
+    "s1_desc": "Tracking caméra et objet précis pour une intégration parfaite.",
+    "s2_title": "Matchmoving",
+    "s2_desc": "Répliques numériques exactes des mouvements de caméra physiques.",
+    "s3_title": "Rotomation",
+    "s3_desc": "Animation de correspondance précise de personnages et d'objets."
+  },
+  "contact": {
+    "title": "NOUS CONTACTER",
+    "name": "Nom",
+    "email": "E-mail",
+    "message": "Message",
+    "send": "Envoyer"
+  }
+}

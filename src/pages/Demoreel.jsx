@@ -2,10 +2,11 @@ import React from 'react';
 // Videos explicitly referenced from /video/ public path to guarantee Netlify build success
 
 const Demoreel = () => {
+  const ytParams = "?rel=0&modestbranding=1";
   const videos = [
-    'https://streamtape.com/e/DzL0D9PepyukM8d/2018.mp4',
-    'https://streamtape.com/e/A6ypZLazQzhX0PL/2017.mp4',
-    'https://streamtape.com/e/LDVm8bJpDMsRpq9/2016.mp4'
+    `https://www.youtube.com/embed/ymfNd-nWcD0${ytParams}&playlist=ymfNd-nWcD0`,
+    `https://www.youtube.com/embed/SGbzqXLvzjE${ytParams}&playlist=SGbzqXLvzjE`,
+    `https://www.youtube.com/embed/6uZnIQAkiG0${ytParams}&playlist=6uZnIQAkiG0`
   ];
 
   return (

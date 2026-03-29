@@ -66,17 +66,19 @@ const Home = () => {
     });
   };
 
-  // Content configuration with Streamtape secure links
+  // Content configuration with YouTube clean embeds
+  const ytParams = "?rel=0&modestbranding=1";
+
   const heroSlides = [
-    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking', video: 'https://streamtape.com/e/LDVm8bJpDMsRpq9/2016.mp4' },
-    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation', video: 'https://streamtape.com/e/A6ypZLazQzhX0PL/2017.mp4' },
-    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ', video: 'https://streamtape.com/e/DzL0D9PepyukM8d/2018.mp4' }
+    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking', video: 'https://www.youtube.com/embed/6uZnIQAkiG0?rel=0&modestbranding=1' },
+    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation', video: 'https://www.youtube.com/embed/SGbzqXLvzjE?rel=0&modestbranding=1' },
+    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ', video: 'https://www.youtube.com/embed/ymfNd-nWcD0?rel=0&modestbranding=1' }
   ];
 
   const showreels = [
-    'https://streamtape.com/e/DzL0D9PepyukM8d/2018.mp4',
-    'https://streamtape.com/e/A6ypZLazQzhX0PL/2017.mp4',
-    'https://streamtape.com/e/LDVm8bJpDMsRpq9/2016.mp4'
+    `https://www.youtube.com/embed/ymfNd-nWcD0${ytParams}&playlist=ymfNd-nWcD0`,
+    `https://www.youtube.com/embed/SGbzqXLvzjE${ytParams}&playlist=SGbzqXLvzjE`,
+    `https://www.youtube.com/embed/6uZnIQAkiG0${ytParams}&playlist=6uZnIQAkiG0`
   ];
 
   const clientLogos = [

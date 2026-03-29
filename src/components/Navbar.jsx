@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="container nav-content">
         <Link to="/" className="logo">
           <span className="marker-plus" style={{ marginRight: '20px' }}></span>
-          PARALLAX FX
+          PARALLAX STUDIO
         </Link>
         <div className={`nav-links ${isOpen ? 'open' : ''}`}>
           <Link to="/" onClick={() => setIsOpen(false)}>{t('nav.home')}</Link>

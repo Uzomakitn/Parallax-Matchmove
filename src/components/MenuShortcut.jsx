@@ -21,7 +21,7 @@ const MenuShortcut = () => {
       <div className="shortcut-wrapper">
         <AnimatePresence>
           {isOpen && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -36,7 +36,7 @@ const MenuShortcut = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        <button 
+        <button
           className="shortcut-btn"
           onClick={() => setIsOpen(!isOpen)}
         >

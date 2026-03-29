@@ -1,13 +1,13 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { 
-  FaLinkedin as Linkedin, 
-  FaInstagram as Instagram, 
-  FaYoutube as Youtube, 
-  FaVimeo as Vimeo, 
-  FaFacebook as Facebook, 
-  FaTwitter as Twitter, 
-  FaGithub as Github, 
-  FaTwitch as Twitch 
+import {
+  FaLinkedin as Linkedin,
+  FaInstagram as Instagram,
+  FaYoutube as Youtube,
+  FaVimeo as Vimeo,
+  FaFacebook as Facebook,
+  FaTwitter as Twitter,
+  FaGithub as Github,
+  FaTwitch as Twitch
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="footer-brand">
             <Link to="/" className="logo" style={{ marginBottom: '1.5rem' }}>
               <span className="marker-plus" style={{ marginRight: '10px' }}></span>
-              Parallax Fx
+              PARALLAX STUDIO
             </Link>
             <p className="footer-desc">
               Premium tracking and matchmoving for high-end visual effects and virtual production.
@@ -49,15 +49,15 @@ const Footer = () => {
           <div className="footer-contact">
             <h3>Contact Us</h3>
             <ul>
-              <li><Mail size={18} /> info@vfxstudio.demo</li>
-              <li><Phone size={18} /> +1 (555) 123-4567</li>
-              <li><MapPin size={18} /> 123 Studio Level, LA, CA</li>
+              <li><Mail size={18} /> contact@parallax.com</li>
+              <li><Phone size={18} /> +216 (55) 123456</li>
+              <li><MapPin size={18} /> 123 zan9et la3mé</li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom glass-card" style={{ padding: '1rem', marginTop: '4rem', textAlign: 'center', borderRadius: '8px' }}>
-          <p>&copy; {new Date().getFullYear()} Parallax Fx. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Parallax Studio. All rights reserved.</p>
         </div>
       </div>
       <style>{`

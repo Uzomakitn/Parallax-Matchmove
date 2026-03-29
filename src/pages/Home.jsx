@@ -26,7 +26,9 @@ import ab8After from '../assets/AB/8.png';
 import ab9Before from '../assets/AB/9-1.png';
 import ab9After from '../assets/AB/9.png';
 
-// Videos are now referenced from the public directory to prevent build failures on Netlify
+import video2016 from '../assets/video/2016.mp4';
+import video2017 from '../assets/video/2017.mp4';
+import video2018 from '../assets/video/2018.mp4';
 
 import blackbird from '../assets/clients/blackbird.png';
 import cinesite from '../assets/clients/cinesite.png';
@@ -58,12 +60,12 @@ const Home = () => {
 
   // Placeholders for content
   const heroSlides = [
-    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking' },
-    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation' },
-    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ' }
+    { id: 1, title: 'MATCHMOVING', desc: 'Camera Tracking & Object Tracking', video: video2016 },
+    { id: 2, title: 'ROTOANIMATION', desc: 'Character Body Animation', video: video2017 },
+    { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ', video: video2018 }
   ];
 
-  const showreels = ['/video/2016.mp4', '/video/2017.mp4', '/video/2018.mp4'];
+  const showreels = [video2018, video2017, video2016];
 
   const clientLogos = [
     blackbird, cinesite, framestore, imageEngine, method, pixomondo,
@@ -107,7 +109,7 @@ const Home = () => {
                     <span className="marker-plus" style={{ marginBottom: '2rem', transform: 'scale(1.5)' }}></span>
                     <h1 className="hero-title">{slide.title}</h1>
                     <p className="hero-desc">{slide.desc}</p>
-                    <button className="btn-primary" style={{ marginTop: '2rem' }} onClick={() => openVideo()}>
+                    <button className="btn-primary" style={{ marginTop: '2rem' }} onClick={() => openVideo(slide.video)}>
                       {t('hero.cta')}
                     </button>
                   </motion.div>

@@ -37,13 +37,22 @@ const VideoModal = ({ isOpen, onClose, videoUrl }) => {
             onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside video
           >
             {/* The user can easily swap this iframe URL with their client projects */}
-            <iframe 
-              src={videoUrl || "https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1"} 
-              title="Showreel Video Player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            ></iframe>
+            {videoUrl && videoUrl.includes('.mp4') ? (
+              <video 
+                src={videoUrl} 
+                autoPlay 
+                controls 
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', background: '#000' }} 
+              />
+            ) : (
+              <iframe 
+                src={videoUrl || "https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1"} 
+                title="Showreel Video Player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            )}
           </motion.div>
         </motion.div>
       )}

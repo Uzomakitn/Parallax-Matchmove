@@ -1,10 +1,8 @@
 import React from 'react';
-import video2016 from '../assets/video/2018.mp4';
-import video2017 from '../assets/video/2017.mp4';
-import video2018 from '../assets/video/2016.mp4';
+// Videos referenced from public directory
 
 const Demoreel = () => {
-  const videos = [video2018, video2017, video2016];
+  const videos = ['/video/2016.mp4', '/video/2017.mp4', '/video/2018.mp4'];
 
   return (
     <div className="section-padding container">

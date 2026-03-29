@@ -26,9 +26,7 @@ import ab8After from '../assets/AB/8.png';
 import ab9Before from '../assets/AB/9-1.png';
 import ab9After from '../assets/AB/9.png';
 
-import video2016 from '../assets/video/2018.mp4';
-import video2017 from '../assets/video/2017.mp4';
-import video2018 from '../assets/video/2016.mp4';
+// Videos are now referenced from the public directory to prevent build failures on Netlify
 
 import blackbird from '../assets/clients/blackbird.png';
 import cinesite from '../assets/clients/cinesite.png';
@@ -65,7 +63,7 @@ const Home = () => {
     { id: 3, title: 'LAYOUT', desc: 'Set Construction (Layout) ' }
   ];
 
-  const showreels = [video2018, video2017, video2016];
+  const showreels = ['/video/2016.mp4', '/video/2017.mp4', '/video/2018.mp4'];
 
   const clientLogos = [
     blackbird, cinesite, framestore, imageEngine, method, pixomondo,

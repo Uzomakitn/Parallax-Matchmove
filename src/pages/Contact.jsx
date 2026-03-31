@@ -1,11 +1,60 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 const Contact = () => {
   const { t } = useTranslation();
+  const [status, setStatus] = useState('idle');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const form = e.target;
+
+    // Contact Us primary template
+    const service_id = 'service_5ezn01r';
+    const template_id = 'template_pydrluo';
+    const public_key = 'KtnP86TPkU3vY4mmC';
+
+    const template_params = {
+      from_name: form.name.value,
+      name: form.name.value,
+      reply_to: form.email.value,
+      email: form.email.value,
+      company: form.company.value,
+      subject: form.subject.value,
+      message: form.message.value
+    };
+
+    try {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id,
+          template_id,
+          user_id: public_key,
+          template_params
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        const errText = await response.text();
+        console.error('EmailJS Validation Error:', response.status, errText);
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('EmailJS Network Error:', error);
+      setStatus('error');
+    }
+  };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -15,7 +64,7 @@ const Contact = () => {
         <div className="contact-info">
           <h1>{t('contact.title')}</h1>
           <p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>
-            Ready to bring your vision to life? Contact our studio to discuss your next big project. 
+            Ready to bring your vision to life? Contact our studio to discuss your next big project.
             We specialize in seamless integration of the impossible.
           </p>
           <div style={{ marginTop: '2rem' }}>
@@ -23,23 +72,48 @@ const Contact = () => {
           </div>
         </div>
         <div className="glass-card contact-form-container">
-          <form className="contact-form">
-            <div className="form-group">
-              <input type="text" id="name" placeholder=" " required />
-              <label htmlFor="name">{t('contact.name')}</label>
+          {status === 'success' ? (
+            <div className="success-message" style={{ textAlign: 'center', padding: '2rem' }}>
+              <h2 style={{ color: 'var(--accent-green)', marginBottom: '1rem' }}>Message Sent!</h2>
+              <p style={{ color: 'var(--text-secondary)' }}>Thank you for reaching out. We will get back to you soon.</p>
+              <button onClick={() => setStatus('idle')} className="btn-primary" style={{ marginTop: '2rem' }}>
+                Send Another
+              </button>
             </div>
-            <div className="form-group">
-              <input type="email" id="email" placeholder=" " required />
-              <label htmlFor="email">{t('contact.email')}</label>
-            </div>
-            <div className="form-group">
-              <textarea id="message" rows="5" placeholder=" " required></textarea>
-              <label htmlFor="message">{t('contact.message')}</label>
-            </div>
-            <button type="submit" className="btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
-              {t('contact.send')}
-            </button>
-          </form>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input type="text" id="name" name="name" placeholder=" " required disabled={status === 'loading'} />
+                <label htmlFor="name">{t('contact.name')}</label>
+              </div>
+              <div className="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required disabled={status === 'loading'} />
+                <label htmlFor="email">{t('contact.email')}</label>
+              </div>
+              <div className="form-group">
+                <input type="text" id="company" name="company" placeholder=" " required disabled={status === 'loading'} />
+                <label htmlFor="company">{t('contact.company', 'Company')}</label>
+              </div>
+              <div className="form-group">
+                <input type="text" id="subject" name="subject" placeholder=" " required disabled={status === 'loading'} />
+                <label htmlFor="subject">{t('contact.subject', 'Subject')}</label>
+              </div>
+              <div className="form-group">
+                <textarea id="message" name="message" rows="5" placeholder=" " required disabled={status === 'loading'}></textarea>
+                <label htmlFor="message">{t('contact.message')}</label>
+              </div>
+
+              {status === 'error' && (
+                <p style={{ color: '#ff4444', fontSize: '0.9rem', textAlign: 'center', marginTop: '1rem' }}>
+                  There was an error sending your message. Please try again.
+                </p>
+              )}
+
+              <button type="submit" className="btn-primary" style={{ width: '100%', marginTop: '1.5rem', opacity: status === 'loading' ? 0.7 : 1 }} disabled={status === 'loading'}>
+                {status === 'loading' ? 'Sending...' : t('contact.send')}
+              </button>
+            </form>
+          )}
         </div>
       </div>
       <style>{`

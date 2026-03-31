@@ -1,6 +1,7 @@
 export { default as Services } from './Services';
 export { default as Contact } from './Contact';
 export { default as Demoreel } from './Demoreel';
+export { default as Team } from './Team';
 
 const Placeholder = ({ title }) => (
   <div className="container section-padding" style={{ textAlign: 'center' }}>
@@ -11,5 +12,4 @@ const Placeholder = ({ title }) => (
 );
 
 export const Projects = () => <Placeholder title="Projects" />;
-export const Team = () => <Placeholder title="Our Team" />;
 export const About = () => <Placeholder title="About Us" />;
